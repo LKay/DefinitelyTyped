@@ -62,7 +62,8 @@ class SomeComponent extends React.Component<SomeComponentProps & InjectedIntlPro
     static propTypes: React.ValidationMap<any> = {
         intl: intlShape.isRequired
     };
-    public render(): React.ReactElement<{}> {
+
+    render(): React.ReactElement<{}> {
         const intl = this.props.intl;
         const formattedDate = intl.formatDate(new Date(), { format: "short" });
         const formattedTime = intl.formatTime(new Date(), { format: "short" });
@@ -171,7 +172,7 @@ class SomeComponent extends React.Component<SomeComponentProps & InjectedIntlPro
 const SomeComponentWithIntl: React.ComponentClass<SomeComponentProps> = injectIntl(SomeComponent);
 
 class TestApp extends React.Component<{}, {}> {
-    public render(): React.ReactElement<{}> {
+    render(): React.ReactElement<{}> {
         const definedMessages = defineMessages({
             "sup": {
                 id: "sup",
@@ -182,6 +183,7 @@ class TestApp extends React.Component<{}, {}> {
         const messages = {
             "hello": "Hello, {name}!"
         };
+
         return (
             <IntlProvider locale="en" formats={{}} messages={messages} defaultLocale="en" defaultFormats={messages}>
                 <SomeComponentWithIntl className="just-for-test" />
